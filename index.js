@@ -24,7 +24,9 @@ app.get('/csv', async (_, res) => {
   newCompanyArray.forEach(company => {
     if (!nameArray.includes(company[2])) nameArray.push(company[2]) 
   })
-  res.send(nameArray)
+  let string = ""; 
+  nameArray.forEach(e => string += e + " ")
+  res.send(string)
 }) ;
 
 app.get('/', async (req, res) => {
