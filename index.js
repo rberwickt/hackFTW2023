@@ -41,7 +41,14 @@ app.get('/companies/:yourCompanies', (req, res) => {
 })
 app.get('/csv'  , async (_, res) => { 
   //const companyArray = fs.readFileSync('./forest500-companies-data-download-2022.csv', {encoding:'utf8', flag:'r'}).text().split("\n").split(",");
+  const companyArray = fs.readFileSync('./forest500-companies-data-download-2022.csv', {encoding:'utf8', flag:'r'}).split('\n')
 
+  const newCompanyArray = companyArray.map(e => e.split(','))
+  const nameArray = []; 
+
+  newCompanyArray.forEach(company => {
+    if (!nameArray.includes(company[2])) nameArray.push(company[2]) 
+  })
   let string = ""; 
   nameArray.forEach(e => string += e + " ")
   res.send(string)
@@ -54,12 +61,23 @@ app.get('/', async (req, res) => {
 app.get('/form', (req, res) => {
   res.sendFile('/form.html', sendFileOptions)
 })
+app.get('/display', (req, res) => {
+  res.sendFile('/display.html', sendFileOptions)
+})
 
 app.get("/compare", (req,res)=>{
   //this is per search methinks
   console.log("dog");
   //return //THE JSON
 })
+
+app.get("/companies", (req, res)=> { 
+  res.send(fs.readFileSync('./companies.txt', {encoding: 'utf8', flag:'r'}))
+})
+
+
+
+
 
 app.get("/rainforest.jpg", (req,res)=>{
   res.sendFile("/rainforest.jpg", sendFileOptions)
