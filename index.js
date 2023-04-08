@@ -11,7 +11,7 @@ const sendFileOptions = {
 
 app.use(bodyParser.json())
 
-app.get('/', async (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile('/index.html', sendFileOptions)
 })
 
