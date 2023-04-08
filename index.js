@@ -15,6 +15,10 @@ app.get('/', (req, res) => {
     res.sendFile('/index.html', sendFileOptions)
 })
 
+app.get('/form', (req, res) => {
+  res.sendFile('/form.html', sendFileOptions)
+})
+
 app.use((req, res) => {
     res.sendFile(req.url, sendFileOptions, (e) => {
       if (e) {
