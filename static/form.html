@@ -8,10 +8,14 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-        <form>
+        <form id="cform" onsubmit="event.preventDefault();">
             <h1>Entry Form</h1>
             <label for="cname">Company Name:</label><br>
-            <input type="text" id="cname" name="cname"><br>
+            <input type="text" id="cname" name="cname">
+            <button type="button" id="search" onclick="searchComp()">Search</button><br>
+            <div id="radioDiv">
+                
+            </div>
 
         </form>
         

@@ -19,6 +19,12 @@ app.get('/form', (req, res) => {
   res.sendFile('/form.html', sendFileOptions)
 })
 
+app.get("/compare", (req,res)=>{
+  //this is per search methinks
+  console.log("dog");
+  //return //THE JSON
+})
+
 app.get("/rainforest.jpg", (req,res)=>{
   res.sendFile("/rainforest.jpg", sendFileOptions)
 })
