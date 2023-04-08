@@ -31,6 +31,20 @@ app.get('/', async (req, res) => {
     res.sendFile('/index.html', sendFileOptions)
 })
 
+app.get('/form', (req, res) => {
+  res.sendFile('/form.html', sendFileOptions)
+})
+
+app.get("/compare", (req,res)=>{
+  //this is per search methinks
+  console.log("dog");
+  //return //THE JSON
+})
+
+app.get("/rainforest.jpg", (req,res)=>{
+  res.sendFile("/rainforest.jpg", sendFileOptions)
+})
+
 app.use((req, res) => {
     res.sendFile(req.url, sendFileOptions, (e) => {
       if (e) {
