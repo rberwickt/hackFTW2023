@@ -19,6 +19,10 @@ app.get('/form', (req, res) => {
   res.sendFile('/form.html', sendFileOptions)
 })
 
+app.get("/rainforest.jpg", (req,res)=>{
+  res.sendFile("/rainforest.jpg", sendFileOptions)
+})
+
 app.use((req, res) => {
     res.sendFile(req.url, sendFileOptions, (e) => {
       if (e) {
