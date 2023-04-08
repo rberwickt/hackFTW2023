@@ -1,10 +1,22 @@
 const fs = require("fs");
+const chartjs = require("chart.js")
+const companies = require('./companies.json')
+// const Plotly = require("plotly.js-dist")
 const { parse } = require("csv-parse");
 console.log("hello")
 const app = require('express')()
 const http = require('http').createServer(app)
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv').config()
+
+
+const companyArray = fs.readFileSync('./forest500-companies-data-download-2022.csv', {encoding:'utf8', flag:'r'}).split('\n')
+const newCompanyArray = companyArray.map(e => e.split(','))
+const nameArray = []; 
+
+newCompanyArray.forEach(company => {
+  if (!nameArray.includes(company[2].substring(1, company[2].length - 1))) nameArray.push(company[2]) 
+})
 
 
 const sendFileOptions = {
@@ -14,16 +26,22 @@ const sendFileOptions = {
 
 app.use(bodyParser.json())
 //
-app.get('/csv', async (_, res) => { 
-  //const companyArray = fs.readFileSync('./forest500-companies-data-download-2022.csv', {encoding:'utf8', flag:'r'}).text().split("\n").split(",");
-  const companyArray = fs.readFileSync('./forest500-companies-data-download-2022.csv', {encoding:'utf8', flag:'r'}).split('\n')
-  
-  const newCompanyArray = companyArray.map(e => e.split(','))
-  const nameArray = []; 
 
-  newCompanyArray.forEach(company => {
-    if (!nameArray.includes(company[2])) nameArray.push(company[2]) 
-  })
+app.get('/companies/:yourCompanies', (req, res) => { 
+  const yourCompanies = req.params['companies'].split('&'); 
+  /* 
+  * find each companies index in newCompanyArray
+  * store each companies 7th and 14th index
+  * send html to make the bargraphs 
+  * 
+  */
+ const dataArray = yourCompanies.map(e => {e: companies[e]}) 
+  const htmlString = '<header>WHATS UP</header>'; 
+  res.send(JSON.stringify(dataArray))
+})
+app.get('/csv'  , async (_, res) => { 
+  //const companyArray = fs.readFileSync('./forest500-companies-data-download-2022.csv', {encoding:'utf8', flag:'r'}).text().split("\n").split(",");
+
   let string = ""; 
   nameArray.forEach(e => string += e + " ")
   res.send(string)
