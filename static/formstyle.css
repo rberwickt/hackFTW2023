@@ -15,7 +15,7 @@ body{
     background-size: 1920px 1080px;
 }
 
-#bigDiv{
+#eldivo{
     font-family:Montserrat;
     background-color: lightgreen;
     opacity: 0.8;
@@ -23,8 +23,8 @@ body{
     margin-left: 10%;
     margin-right: 10%;
     padding-top: 20px;
-    padding-bottom: 50px;
-    margin-bottom: 2%;
+    padding-bottom: 30px;
+    
 }
 
 button{
@@ -36,7 +36,7 @@ button{
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 50px;
+  font-size: 30px;
     cursor: pointer;
     border-radius: 20px;
 }
@@ -54,10 +54,20 @@ button:hover {
     opacity: 1;
 }
 
-#info{
+#elfieldseto{
     
-    padding: 4%;
-    padding-top: 0%;
-    font-size: 30px;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 3%;
     
+}
+
+#radiodiv{
+    font-family: Montserrat;
+    font-size: 25px;
+}
+
+
+label{
+    margin: 100px 0px
 }
