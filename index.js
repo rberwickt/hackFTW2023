@@ -35,7 +35,7 @@ app.get('/companies/:yourCompanies', (req, res) => {
   * send html to make the bargraphs 
   * 
   */
- const dataArray = yourCompanies.map(e => companies[e]) 
+ const dataArray = yourCompanies.map(e => {e: companies[e]}) 
   const htmlString = '<header>WHATS UP</header>'; 
   res.send(JSON.stringify(dataArray))
 })

@@ -10,7 +10,7 @@ function removeQuotes(string) {
 newCompanyArray.forEach(company => {
   if (!Object.keys(companyJSON).includes(company[2])) {
       console.log(company[2])
-    companyJSON[removeQuotes(company[2])] = {"totalScore": removeQuotes(company[7]), "approachScore": removeQuotes(company[14])}
+    companyJSON[removeQuotes(company[2])] = {"totalScore": removeQuotes(company[7]), "approachScore": removeQuotes(company[14]).substring(2, 6)}
 }  
 })
 
